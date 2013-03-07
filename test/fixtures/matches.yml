@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2013-03-07 01:11:27
+  winner_score: 1
+  loser_score: 1
+
+two:
+  date: 2013-03-07 01:11:27
+  winner_score: 1
+  loser_score: 1

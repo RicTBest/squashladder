@@ -1,0 +1,69 @@
+.left-main
+  - if @unconfirmed_matches and @unconfirmed_matches.count
+    %table.unconfirmed-matches
+    - @unconfirmed_matches.each do |m|
+      - other = m.winner_id == @user.id ? m.loser : m.winner
+      %tr
+        %td= "Against #{other.name}"
+        %td= "on #{m.date}"
+        %td
+          %a{:href=>"/matches/#{m.id}/confirm"} Confirm
+        %td
+          %a{:href=>"/matches/#{m.id}/dispute"} Dispute
+
+  %h1 My Standing
+
+  %table.rankings
+    %thead
+      %tr
+        %td Rank
+        %td Name
+        %td Rating
+    - @nearby_ranks.each do |n|
+      - c = n.id == @user.id ? "user" : ""
+      %tr{:class => c}
+        %td= n.rank
+        %td
+          %a{:href=>"/user/#{n.id}"}= n.name
+        - if n.matches.count < 4
+          %td= "#{n.rating}*"
+        - else
+          %td= n.rating
+
+  %p View full ladder
+
+.right-main
+  %h1 My Matches
+
+  %table.matches
+    %thead
+      %tr
+        %td Date
+        %td Opponent
+        %td Score
+    - @matches.each do |m|
+      - c = "tie"
+      - if m.winner_id == @user.id
+        - opp = m.loser
+        - c = "win" if not m.tie
+      - else
+        - opp = m.winner
+        - c = "lose" if not m.tie
+      %tr{:class => c}
+        %td= m.date
+        %td= opp.name
+        %td= "#{m.winner_score}-#{m.loser_score}"
+
+  %p Complete match history
+
+  %h1 My availabilities
+
+  %table.availabilities
+    - @availabilities.each do |a|
+      %tr
+        %td= a.start_t
+        %td= a.end_t
+        %td.delete X
+
+  %p Add availabilities
+

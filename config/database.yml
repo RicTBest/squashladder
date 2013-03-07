@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: squashladder_development
+  pool: 5
+  username: rafi
+  password:

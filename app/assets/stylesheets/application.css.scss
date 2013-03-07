@@ -1,0 +1,59 @@
+@import "bourbon";
+@import "bootstrap_override";
+
+$width: 960px;
+$yale_blue: #0F4D92;
+$nav_height: 50px;
+
+body {
+  margin: 0;
+  padding: 0;
+  font: 14px/20px Lato, "Helvetica Neue", sans-serif;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  color: $yale_blue;
+  &:hover {
+    color: lighten($yale_blue, 20%);
+  }
+  @include transition(color 0.2s);
+}
+
+.container {
+  width: $width;
+  margin: 0 auto;
+}
+
+.pull-right {
+  float: right;
+}
+
+.nav-bar {
+  height: $nav_height;
+  color: #ccc;
+  @include box-shadow(0 1px 1px rgba(black, 0.2));
+
+  a {
+    text-decoration: none;
+  }
+  li {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .brand {
+    line-height: $nav_height;
+    font-size: 150%;
+  }
+}
+
+.content {
+  margin-top: 20px;
+}
+
+@import "welcome";
+@import "users";

@@ -2,4 +2,25 @@
   .user {
     background-color: rgba($yale_blue, 0.5);
   }
+
+	width: 100%;
+	border-spacing: 0;
+	border: 1px solid black;
+	margin-bottom: 4px;
+
+  th {
+ 		border-top: 1px solid black;
+		border-bottom: 2px solid black;
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+		background-color: darken($yale_blue, 10%);
+		color: white;
+	}
+
+  td {
+		border: 1px solid black;
+	}
 }
+
+
+

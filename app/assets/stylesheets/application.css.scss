@@ -52,7 +52,42 @@ a {
 }
 
 .content {
-  margin-top: 20px;
+  margin-top: 70px;
+}
+
+.left-main {
+  float: left;
+  width: 50%
+}
+
+.right-main {
+  float: left;
+  margin-left: 20px;
+}
+
+.ladder {
+  width: 300px;
+}
+
+.full {
+  display:none;
+}
+
+button.expand {
+  width:24px;
+  height:24px;
+  border-radius:12px;
+  font-size:10px;
+  color:#fff;
+  line-height:12px;
+  text-align:center;
+  background:darken($yale_blue, 10%);
+  border: 0;
+  &:hover {
+    color: #ddd;
+  }
+  @include transition(color 0.1s);
+
 }
 
 @import "welcome";

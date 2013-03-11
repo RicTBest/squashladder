@@ -16,6 +16,33 @@ rafi = User.create(
   netid: "fak23"
 )
 
+joey = User.create(
+  name: "Joey Rosenberg",
+  email: "joey.rosenberg@yale.edu",
+  rating: 1600,
+  college: "TR",
+  year: "2015",
+  netid: "jr22"
+)
+
+calvin = User.create(
+  name: "Calvin Jones",
+  email: "calvin.jones@yale.edu",
+  rating: 1250,
+  college: "TR",
+  year: "2015",
+  netid: "cal18"
+)
+
+will = User.create(
+  name: "Will Feldman",
+  email: "william.j.feldman@yale.edu",
+  rating: 1550,
+  college: "TR",
+  year: "2015",
+  netid: "wjf6"
+)
+
 game = Match.create(
   winner_id: ric.id,
   loser_id: rafi.id,

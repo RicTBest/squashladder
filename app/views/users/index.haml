@@ -10,27 +10,50 @@
           %a{:href=>"/matches/#{m.id}/confirm"} Confirm
         %td
           %a{:href=>"/matches/#{m.id}/dispute"} Dispute
+    %h1 My Standing
 
-  %h1 My Standing
+  .ladder
+    %table.rankings
+      %thead
+        %tr
+          %th Rank
+          %th Name
+          %th Rating
+      - @above_ranks.each do |n|
+        - c = n.id == @user.id ? "user full" : "full"
+        %tr{:class => c}
+          %td= n.rank
+          %td
+            %a{:href=>"/user/#{n.id}"}= n.name
+          - if n.matches.count < 4
+            %td= "#{n.rating}*"
+          - else
+            %td= n.rating
+      - @nearby_ranks.each do |n|
+        - c = n.id == @user.id ? "user partial" : "partial"
+        %tr{:class => c}
+          %td= n.rank
+          %td
+            %a{:href=>"/user/#{n.id}"}= n.name
+          - if n.matches.count < 4
+            %td= "#{n.rating}*"
+          - else
+            %td= n.rating
+      - @below_ranks.each do |n|
+        - c = n.id == @user.id ? "user full" : "full"
+        %tr{:class => c}
+          %td= n.rank
+          %td
+            %a{:href=>"/user/#{n.id}"}= n.name
+          - if n.matches.count < 4
+            %td= "#{n.rating}*"
+          - else
+            %td= n.rating
 
-  %table.rankings
-    %thead
-      %tr
-        %td Rank
-        %td Name
-        %td Rating
-    - @nearby_ranks.each do |n|
-      - c = n.id == @user.id ? "user" : ""
-      %tr{:class => c}
-        %td= n.rank
-        %td
-          %a{:href=>"/user/#{n.id}"}= n.name
-        - if n.matches.count < 4
-          %td= "#{n.rating}*"
-        - else
-          %td= n.rating
+    .pull-right
+      %button.rankings_toggle.expand.partial +
+      %button.rankings_toggle.expand.full -
 
-  %p View full ladder
 
 .right-main
   %h1 My Matches

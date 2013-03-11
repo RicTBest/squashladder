@@ -23,13 +23,22 @@ class User < ActiveRecord::Base
     won_matches.includes(:user) + lost_matches.includes(:user)
   end
 
+  def above_ranks
+    stop = offset = rank > 1 ? rank - 2 : 0
+    User.order("rank").where(rank < stop)
+  end
+
   def nearby_ranks
-    offset = rank >= 5 ? rank-5 : 0
+    offset = rank > 1 ? rank - 2 : 0
     # fromBottom = rank - User.count
     # if fromBottom < 5
     #   offset = rank - 5 - fromBottom
     # end
-    User.order("rank").offset(offset).limit(11)
+    User.order("rank").offset(offset).limit(3)
+  end
+
+  def below_ranks
+    User.order("rank").offset(rank+2)
   end
 
   def disputed

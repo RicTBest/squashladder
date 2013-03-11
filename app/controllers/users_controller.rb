@@ -19,6 +19,9 @@ class UsersController < ApplicationController
     @matches = @user.matches
     @unconfirmed_matches = @matches.select { |m| m.confirmed? }
     @nearby_ranks = @user.nearby_ranks
+    @above_ranks = @user.above_ranks
+    @below_ranks = @user.below_ranks
+    @all_ranks = User.order("rank")
   end
 
   # GET /users/1

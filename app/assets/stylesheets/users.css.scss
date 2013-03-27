@@ -1,7 +1,20 @@
-.rankings {
+.dblist {
   .user {
     background-color: rgba($yale_blue, 0.5);
   }
+
+  .win {
+    background-color: rgba(green, 0.5);
+  }
+
+  .tie {
+    background-color: rgba(blue, 0.5);
+  }
+
+  .lose {
+    background-color: rgba(red, 0.5);
+  }
+
 
 	width: 100%;
 	border-spacing: 0;
@@ -21,6 +34,3 @@
 		border: 1px solid black;
 	}
 }
-
-
-

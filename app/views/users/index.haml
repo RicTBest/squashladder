@@ -13,12 +13,12 @@
     %h1 My Standing
 
   .ladder
-    %table.rankings
+    %table.dblist
       %thead
         %tr
-          %th Rank
+          %th{:width => "20%"} Rank
           %th Name
-          %th Rating
+          %th{:width => "20%"} Rating
       - @above_ranks.each do |n|
         - c = n.id == @user.id ? "user full" : "full"
         %tr{:class => c}
@@ -58,13 +58,13 @@
 .right-main
   %h1 My Matches
 
-  %table.matches
+  %table.dblist
     %thead
       %tr
-        %td Date
-        %td Opponent
-        %td Score
-    - @matches.each do |m|
+        %th{:width => "60%"} Date
+        %th Opponent
+        %th{:width => "20%"} Score
+    - @confirmed_matches.each do |m|
       - c = "tie"
       - if m.winner_id == @user.id
         - opp = m.loser
@@ -72,12 +72,15 @@
       - else
         - opp = m.winner
         - c = "lose" if not m.tie
-      %tr{:class => c}
+      %tr
         %td= m.date
-        %td= opp.name
-        %td= "#{m.winner_score}-#{m.loser_score}"
+        %td
+          %a{:href=>"/user/#{opp.id}"}=opp.name
+        %td{:class => c}= "#{m.winner_score}-#{m.loser_score}"
 
-  %p Complete match history
+  .pull-right
+    %button.rankings_toggle.expand.partial +
+    %button.rankings_toggle.expand.full -
 
   %h1 My availabilities
 

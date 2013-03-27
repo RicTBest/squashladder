@@ -1,6 +1,5 @@
 class Match < ActiveRecord::Base
   attr_accessible :date, :loser_score, :winner_score, :winner_id, :loser_id
-
   belongs_to :winner, :class_name => "User"
   belongs_to :loser, :class_name => "User"
 

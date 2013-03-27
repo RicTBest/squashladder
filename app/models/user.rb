@@ -11,16 +11,16 @@ class User < ActiveRecord::Base
   after_create { User.update_ranks }
 
   def wins
-    won_matches.where(tie: false).includes(:user)
+    won_matches.where(tie: false)
   end
 
   def losses
-    lost_matches.where(tie: false).includes(:user)
+    lost_matches.where(tie: false)
   end
 
   # Includes ties!
   def matches
-    won_matches.includes(:user) + lost_matches.includes(:user)
+    won_matches + lost_matches
   end
 
   def above_ranks

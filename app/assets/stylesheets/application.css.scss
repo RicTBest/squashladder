@@ -62,7 +62,7 @@ a {
 
 .right-main {
   float: left;
-  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .ladder {
@@ -87,6 +87,7 @@ button.expand {
     color: #ddd;
   }
   @include transition(color 0.1s);
+  margin-bottom:10px;
 
 }
 

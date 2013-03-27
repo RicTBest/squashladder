@@ -18,6 +18,9 @@ class UsersController < ApplicationController
     @availabilities = @user.future_availabilities
     @matches = @user.matches
     @unconfirmed_matches = @matches.select { |m| m.confirmed? }
+    @confirmed_matches = @matches.select { |m| !m.confirmed? }
+    #@recent_matches = @confirmed_matches.limit(2)
+    #@distant_matches = @confirmed_matches.offset(2)
     @nearby_ranks = @user.nearby_ranks
     @above_ranks = @user.above_ranks
     @below_ranks = @user.below_ranks

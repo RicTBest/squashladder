@@ -44,20 +44,21 @@ will = User.create(
 )
 
 game = Match.create(
-  winner_id: ric.id,
-  loser_id: rafi.id,
+  winner_id: 2,
+  loser_id: 1,
   winner_score: 3,
-  loser_score: 2
+  loser_score: 2,
+  date: Time.now
 )
 
 a = Availability.create(
-  user_id: 2,
+  user_id: 1,
   start_t: Time.now + 5.day,
   end_t: Time.now + 5.day + 1.hour
 )
 
 b = Availability.create(
-  user_id: 2,
+  user_id: rafi.id,
   start_t: Time.now + 5.day + 2.hour,
   end_t: Time.now + 5.day + 3.hour
 )

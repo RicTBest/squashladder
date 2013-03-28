@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
     lost_matches.where(tie: false)
   end
 
-  # Includes ties!
+  # Includes ties..which is why we don't use wins/losses
   def matches
     (won_matches + lost_matches).sort_by { |m| m.date }
   end

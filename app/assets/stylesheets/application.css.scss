@@ -1,5 +1,10 @@
 @import "bourbon";
-@import "bootstrap_override";
+// Uncomment this to get Twitter Bootstrap. I don't think you need it bc your
+// styling is good enough as is.
+// @import "bootstrap";
+// If you want to change any of the Bootstrap styles, it's conventional to put
+// them in this file Bootstrap override. There's nothing in it now.
+// @import "bootstrap_override";
 
 $width: 960px;
 $yale_blue: #0F4D92;
@@ -71,6 +76,21 @@ a {
 
 .full {
   display:none;
+}
+
+#flash {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  .success {
+    color: green;
+  }
+  .error {
+    color: red;
+  }
 }
 
 button.expand {

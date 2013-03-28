@@ -7,18 +7,27 @@ class AvailabilitiesController < ApplicationController
   end
 
   def create
-    start_t = params[:start]
-    end_t = params[:end]
-    @availability = Availability.new(
-      start_t: start_t,
-      end_t: end_t,
-      user: current_user
-    )
+    # start_t = params[:start]
+    # end_t = params[:end]
+    # @availability = Availability.new(
+    #   start_t: start_t,
+    #   end_t: end_t,
+    #   user: current_user
+    # )
+    
+    @availability = Availability.new(params[:availability])
     if @availability.save
-      format.json { render json: @availability, status: :created }
+      flash[:success] = "New availability created!"
     else
-      format.json { render json: @match.errors, status: :unprocessable_entity }
+      flash[:error] = @availability.errors[:start_t][0]
     end
+    redirect_to "/"
+
+    # if @availability.save
+    #   format.json { render json: @availability, status: :created }
+    # else
+    #   format.json { render json: @match.errors, status: :unprocessable_entity }
+    # end
   end
 
   def update
@@ -27,9 +36,9 @@ class AvailabilitiesController < ApplicationController
     render json: @a
   end
 
-  def delete
+  def destroy
     @a = Availability.find(params[:id])
-    @a.delete
-    render json: @a
+    @a.destroy
+    redirect_to "/"
   end
 end

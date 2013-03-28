@@ -4,4 +4,4 @@ A ranking system, using the same algorithm as the [chess rating system](http://e
 
 Incorporates the functionality of reporting and scheduling matches, viewing your rating and rank and adding available times so others can challenge you!
 
-Masterminded by Ric Best (PC '14) and designed by Rafi Khan (PC '15)
+Masterminded by Ric Best (PC '14) and designed by [Rafi Khan](http://rafikhan.me) (PC '15)

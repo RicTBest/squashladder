@@ -20,11 +20,11 @@ class User < ActiveRecord::Base
 
   # Includes ties!
   def matches
-    won_matches + lost_matches
+    (won_matches + lost_matches).sort_by { |m| m.date }
   end
 
   def above_ranks
-    stop = offset = rank > 1 ? rank - 2 : 0
+    stop = rank > 1 ? rank - 2 : 0
     User.order("rank").where(rank < stop)
   end
 

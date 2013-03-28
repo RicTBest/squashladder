@@ -15,16 +15,19 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
-    @availabilities = @user.future_availabilities
+    # @availabilities = @user.future_availabilities
+    @availabilities = @user.availabilities
     @matches = @user.matches
     @unconfirmed_matches = @matches.select { |m| m.confirmed? }
     @confirmed_matches = @matches.select { |m| !m.confirmed? }
-    #@recent_matches = @confirmed_matches.limit(2)
-    #@distant_matches = @confirmed_matches.offset(2)
+    @recent_matches = @confirmed_matches[0..1]
+    # @distant_matches = @confirmed_matches[2..]
     @nearby_ranks = @user.nearby_ranks
     @above_ranks = @user.above_ranks
     @below_ranks = @user.below_ranks
     @all_ranks = User.order("rank")
+    @availability = Availability.new
+    @availability.user_id = @user.id
   end
 
   # GET /users/1

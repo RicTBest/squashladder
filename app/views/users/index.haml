@@ -1,3 +1,9 @@
+#flash
+  - if flash[:success]
+    %p.success= flash[:success]
+  - elsif flash[:error]
+    %p.error= flash[:error]
+
 .left-main
   - if @unconfirmed_matches and @unconfirmed_matches.count
     %table.unconfirmed-matches
@@ -89,7 +95,19 @@
       %tr
         %td= a.start_t
         %td= a.end_t
-        %td.delete X
+        %td.delete 
+          = link_to "X", availability_path(a), method: :delete
 
-  %p Add availabilities
+  %a.add-avail{href: "#"} Add availabilities
+  = form_for @availability, url: { controller: "availabilities", action: "create" } do |f|
+    = label_tag "Start time"
+    = f.datetime_select :start_t, placeholder: "Start time"
+    %br
+    = label_tag "End time"
+    = f.datetime_select :end_t, placeholder: "End time"
+    %br
+    = hidden_field(:availability, :user_id)
+    = f.submit "Create"
 
+  -# http://guides.rubyonrails.org/form_helpers.html
+  -# http://guides.rubyonrails.org/routing.html#resource-routing-the-rails-default

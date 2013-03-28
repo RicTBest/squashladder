@@ -1,3 +1,18 @@
+#flash {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  .success {
+    color: green;
+  }
+  .error {
+    color: red;
+  }
+}
+
 .dblist {
   .user {
     background-color: rgba($yale_blue, 0.5);

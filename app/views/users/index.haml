@@ -93,6 +93,7 @@
   %table.availabilities
     - @availabilities.each do |a|
       %tr
+        -# For formatting, look up Ruby Time formatting
         %td= a.start_t
         %td= a.end_t
         %td.delete 

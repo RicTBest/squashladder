@@ -1,0 +1,86 @@
+#flash
+  - if flash[:success]
+    %p.success= flash[:success]
+  - elsif flash[:error]
+    %p.error= flash[:error]
+
+.left-main
+  %h1= "#{@user.name}'s standing"
+  .ladder
+    %table.dblist.table
+      %thead
+        %tr
+          %th{:width => "20%"} Rank
+          %th Name
+          %th{:width => "20%"} Rating
+      - @above_ranks.each do |n|
+        - c = n.id == @user.id ? "user full" : "full"
+        %tr{:class => c}
+          %td= n.rank
+          %td
+            %a{:href=>"/user/#{n.id}"}= n.name
+          - if n.matches.count < 4
+            %td= "#{n.rating}*"
+          - else
+            %td= n.rating
+      - @nearby_ranks.each do |n|
+        - c = n.id == @user.id ? "user partial" : "partial"
+        %tr{:class => c}
+          %td= n.rank
+          %td
+            %a{:href=>"/user/#{n.id}"}= n.name
+          - if n.matches.count < 4
+            %td= "#{n.rating}*"
+          - else
+            %td= n.rating
+      - @below_ranks.each do |n|
+        - c = n.id == @user.id ? "user full" : "full"
+        %tr{:class => c}
+          %td= n.rank
+          %td
+            %a{:href=>"/user/#{n.id}"}= n.name
+          - if n.matches.count < 4
+            %td= "#{n.rating}*"
+          - else
+            %td= n.rating
+
+    .pull-right
+      %button.rankings_toggle.expand.partial +
+      %button.rankings_toggle.expand.full -
+
+
+.right-main
+  %h1= "#{@user.name}'s Matches"
+
+  %table.dblist
+    %thead
+      %tr
+        %th{:width => "60%"} Date
+        %th Opponent
+        %th{:width => "20%"} Score
+    - @confirmed_matches.each do |m|
+      - c = "tie"
+      - if m.winner_id == @user.id
+        - opp = m.loser
+        - c = "win" if not m.tie
+      - else
+        - opp = m.winner
+        - c = "lose" if not m.tie
+      %tr
+        %td= m.date
+        %td
+          %a{:href=>"/user/#{opp.id}"}=opp.name
+        %td{:class => c}= "#{m.winner_score}-#{m.loser_score}"
+
+  .pull-right
+    %button.rankings_toggle.expand.partial +
+    %button.rankings_toggle.expand.full -
+
+  %h1= "#{@user.name}'s Availabilities"
+
+  %table.availabilities
+    - @availabilities.each do |a|
+      %tr
+        -# For formatting, look up Ruby Time formatting
+        %td= a.start_t
+        %td= a.end_t

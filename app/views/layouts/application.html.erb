@@ -13,13 +13,30 @@
       <button class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       <h3>Report a Match</h3>
     </div>
-    <div class="modal-body">
-      
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancel</button>
-      <button class="btn btn-primary">Go!</button>
-    </div>
+    <%= form_tag('/match', style: "margin: 0") %>
+      <div class="modal-body">
+        <table>
+          <tr>
+            <td>Against</td>
+            <td><input type="text" placeholder="name" name="match[against]"></td>
+          </tr>
+          <tr>
+            <td>on</td>
+            <td><input type="date" placeholder="today" name="match[date]"></td>
+          </tr>
+          <tr>
+            <td>with score</td>
+            <td>
+              <input type="number" name="match[winner_score]" size="2">-<input type="number" name="match[loser_score]" size="2">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <input type="submit" value="Go!" class="btn btn-primary"></a>
+      </div>
+    </form>
   </div>
   <div class="nav-bar">
     <div class="container">

@@ -30,15 +30,16 @@ class UsersController < ApplicationController
     @availability.user_id = @user.id
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
+    @availabilities = @user.availabilities
+    @matches = @user.matches
+    @confirmed_matches = @matches.select { |m| !m.confirmed? }
+    @recent_matches = @confirmed_matches[0..1]
+    # @distant_matches = @confirmed_matches[2..]
+    @nearby_ranks = @user.nearby_ranks
+    @above_ranks = @user.above_ranks
+    @below_ranks = @user.below_ranks
   end
 
   # PUT /users/1

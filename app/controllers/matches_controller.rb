@@ -58,17 +58,18 @@ class MatchesController < ApplicationController
   # POST /matches
   # POST /matches.json
   def create
-    @match = Match.new(params[:match])
-
-    respond_to do |format|
-      if @match.save
-        format.html { redirect_to @match, notice: 'Match was successfully created.' }
-        format.json { render json: @match, status: :created, location: @match }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @match.errors, status: :unprocessable_entity }
-      end
-    end
+    # @match = Match.new(params[:match])
+    p params[:match]
+    redirect_to "/"
+    # respond_to do |format|
+    #   if @match.save
+    #     format.html { redirect_to @match, notice: 'Match was successfully created.' }
+    #     format.json { render json: @match, status: :created, location: @match }
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @match.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PUT /matches/1

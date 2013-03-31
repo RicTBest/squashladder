@@ -14,6 +14,9 @@ class AvailabilitiesController < ApplicationController
     #   end_t: end_t,
     #   user: current_user
     # )
+
+    params[:availability][:start_t] = Time.zone.parse(params[:availability][:start_t]).utc
+    params[:availability][:end_t] = Time.zone.parse(params[:availability][:end_t]).utc
     
     @availability = Availability.new(params[:availability])
     if @availability.save

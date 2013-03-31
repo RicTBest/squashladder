@@ -54,12 +54,13 @@ class MatchesController < ApplicationController
   def edit
     @match = Match.find(params[:id])
   end
-
+  
   # POST /matches
   # POST /matches.json
   def create
     # @match = Match.new(params[:match])
     p params[:match]
+    flash[:error] = "Nothing happened...fill it in"
     redirect_to "/"
     # respond_to do |format|
     #   if @match.save
